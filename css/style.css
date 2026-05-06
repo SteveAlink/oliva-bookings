@@ -1,0 +1,133 @@
+#oliva-bookings {
+    margin: 2rem auto;
+    padding: 1.5rem;
+    max-width: 860px;
+    border: 1px solid #BCC915;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+#oliva-bookings h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #6A720C;
+}
+
+.oliva-bookings-month {
+    margin-top: 1.5rem;
+}
+
+.oliva-bookings-month h3 {
+    margin: 0 0 0.75rem 0;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #BCC915;
+    color: #6A720C;
+    font-size: 1.2rem;
+}
+
+.oliva-bookings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.oliva-bookings-event {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-left: 5px solid #BCC915;
+    border-radius: 8px;
+    background: #f4f5e4;
+}
+
+.oliva-bookings-event-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.oliva-bookings-date-value {
+    font-weight: 600;
+}
+
+.oliva-bookings-date-description {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.oliva-bookings-spots {
+    display: inline-block;
+    width: fit-content;
+    margin-top: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #6A720C;
+    border: 1px solid #BCC915;
+    font-size: 0.9rem;
+}
+
+.oliva-bookings-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 72px;
+    gap: 0.5rem;
+}
+
+.oliva-bookings-form input,
+.oliva-bookings-form button {
+    min-height: 2.25rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #BCC915;
+}
+
+.oliva-bookings-form button {
+    grid-column: 1 / -1;
+    cursor: pointer;
+    color: #ffffff;
+    background: #6A720C;
+    border-color: #6A720C;
+}
+
+.oliva-bookings-form button:hover,
+.oliva-bookings-form button:focus {
+    background: #515708;
+}
+
+.oliva-bookings-full,
+.oliva-bookings-empty,
+.oliva-bookings-notice {
+    padding: 0.75rem;
+    border-radius: 8px;
+}
+
+.oliva-bookings-full {
+    background: #6A720C;
+    color: #ffffff;
+}
+
+.oliva-bookings-empty,
+.oliva-bookings-notice-success {
+    background: #eef3c3;
+    color: #6A720C;
+}
+
+.oliva-bookings-notice-error {
+    background: #f6e3e3;
+    color: #7c2020;
+}
+
+@media (max-width: 760px) {
+    .oliva-bookings-event {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .oliva-bookings-form {
+        grid-template-columns: 1fr;
+    }
+}
