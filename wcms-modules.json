@@ -1,0 +1,13 @@
+{
+    "version": 1,
+    "plugins": {
+        "oliva-bookings": {
+            "name": "Oliva Bookings",
+            "repo": "https://github.com/SteveAlink/oliva-bookings/tree/main",
+            "zip": "https://github.com/SteveAlink/oliva-bookings/archive/main.zip",
+            "summary": "Simple WonderCMS no-payment bookings plugin for Oliva Events dates.",
+            "version": "0.1.0",
+            "image": "https://raw.githubusercontent.com/SteveAlink/oliva-bookings/main/preview.png"
+        }
+    }
+}
