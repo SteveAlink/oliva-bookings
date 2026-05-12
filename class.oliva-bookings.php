@@ -360,7 +360,8 @@ class OlivaBookings
         $input = $doc->createElement('input');
         $input->setAttribute('type', 'text');
         $input->setAttribute('name', $name);
-        $input->setAttribute('class', 'form-control');
+        $input->setAttribute('class', 'editText');
+        $input->setAttribute('style', 'width: 100%; border: 1px solid #ccc;');
         $input->setAttribute('value', $value);
 
         return $input;
@@ -370,7 +371,8 @@ class OlivaBookings
     {
         $textarea = $doc->createElement('textarea');
         $textarea->setAttribute('name', $name);
-        $textarea->setAttribute('class', 'form-control');
+        $textarea->setAttribute('class', 'editText');
+        $textarea->setAttribute('style', 'width: 100%; border: 1px solid #ccc;');
         $textarea->setAttribute('rows', '6');
         $textarea->nodeValue = $value;
 
@@ -386,7 +388,8 @@ class OlivaBookings
     {
         $select = $doc->createElement('select');
         $select->setAttribute('name', $name);
-        $select->setAttribute('class', 'form-control');
+        $select->setAttribute('class', 'editText');
+        $select->setAttribute('style', 'width: 100%; border: 1px solid #ccc;');
 
         foreach ($options as $value => $label) {
             $option = $doc->createElement('option', $label);
@@ -445,14 +448,10 @@ class OlivaBookings
         $form->setAttribute('method', 'post');
         $form->setAttribute('action', '');
 
-        $title = $doc->createElement('h2', $this->t('headingBookingsSettings'));
+        $title = $doc->createElement('p');
+        $title->setAttribute('class', 'subTitle');
+        $title->nodeValue = $this->t('headingBookingsSettings');
         $form->appendChild($title);
-
-        if (!$this->hasOlivaEvents()) {
-            $dependency = $doc->createElement('p', $this->t('dependencyMissing'));
-            $dependency->setAttribute('class', 'alert alert-warning');
-            $form->appendChild($dependency);
-        }
 
         $form->appendChild($this->createLabel($doc, $this->t('labelBookingsTitle')));
         $form->appendChild($this->createInput($doc, 'oliva_bookings_title', $this->getBookingsTitle()));
@@ -487,24 +486,39 @@ class OlivaBookings
         $saveButton = $doc->createElement('button');
         $saveButton->setAttribute('type', 'submit');
         $saveButton->setAttribute('name', 'saveOlivaBookingsSettings');
-        $saveButton->setAttribute('class', 'btn btn-primary');
+        $saveButton->setAttribute('class', 'wbtn wbtn-info');
         $saveButton->nodeValue = $this->t('saveButton');
 
         $form->appendChild($saveButton);
 
-        $bookings = array_reverse($this->getBookings());
-        $bookingsTitle = $doc->createElement('h3', $this->t('headingBookingsList'));
-        $form->appendChild($bookingsTitle);
-
-        if (empty($bookings)) {
-            $form->appendChild($doc->createElement('p', $this->t('emptyBookingsMessage')));
+        if (!$this->hasOlivaEvents()) {
+            $dependency = $doc->createElement('p', $this->t('dependencyMissing'));
+            $dependency->setAttribute('class', 'subTitle');
+            $form->appendChild($dependency);
         } else {
-            $list = $doc->createElement('ul');
-            foreach ($bookings as $booking) {
-                $line = ($booking['date'] ?? '') . ' - ' . ($booking['name'] ?? '') . ' - ' . ($booking['email'] ?? '') . ' - ' . ($booking['spots'] ?? 1);
-                $list->appendChild($doc->createElement('li', $line));
+
+            $bookings = array_reverse($this->getBookings());
+            $bookingsTitle = $doc->createElement('p');
+            $bookingsTitle->setAttribute('class', 'subTitle');
+            $bookingsTitle->nodeValue = $this->t('headingBookingsList');
+            $form->appendChild($bookingsTitle);
+
+            if (empty($bookings)) {
+                $noBookings = $doc->createElement('p');
+                $noBookings->setAttribute('class', 'change');
+                $noBookings->nodeValue = $this->t('emptyBookingsMessage');
+                $form->appendChild($noBookings);
+            } else {
+                $list = $doc->createElement('ul');
+                foreach ($bookings as $booking) {
+                    $line = ($booking['date'] ?? '') . ' - ' . ($booking['name'] ?? '') . ' - ' . ($booking['email'] ?? '') . ' - ' . ($booking['spots'] ?? 1);
+                    $listItem = $doc->createElement('li');
+                    $listItem->setAttribute('class', 'wbtn wbtn-info');
+                    $listItem->nodeValue = $line;
+                    $list->appendChild($listItem);
+                }
+                $form->appendChild($list);
             }
-            $form->appendChild($list);
         }
 
         $wrapper->appendChild($form);
