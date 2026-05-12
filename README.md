@@ -27,8 +27,8 @@ or:
 
 ## Installation and Usage
 
-1. Install `oliva-events`.
-2. Upload the `oliva-bookings` folder to `plugins/oliva-bookings`.
+1. Install plugin `oliva-events`.
+2. Install this plugin `oliva-bookings`.
 3. Enable the plugin in WonderCMS.
 4. Open Settings and use the `Oliva Bookings` tab.
 5. Add `{{oliva-bookings}}` to a page, or switch placement mode to footer.
@@ -48,10 +48,12 @@ https://raw.githubusercontent.com/SteveAlink/oliva-bookings/main/wcms-modules.js
 ```
 
 ## Versions
+v0.1.1 12-05-2026 Update admin styling   
 v0.1.0 06-05-2026 Initial version
 
-v0.1.0 Initial version
+v0.1.1 Admin styling has been update to follow more standard WonderCMS style   
 
+v0.1.0 Initial version
 - Requires Oliva Events
 - Lists events from Oliva Events date data
 - Shows available spots counter
